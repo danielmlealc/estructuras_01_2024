@@ -1,7 +1,7 @@
 from typing import Union
 from fastapi import FastAPI
 
-from mook.py import tutelas
+import mook
 
 app = FastAPI()
 
@@ -11,7 +11,7 @@ def read_root():
 
 @app.get("/data")
 def read_root():
-    return {"tutelas": tutelas}
+    return {"tutelas": mook.tutelas}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
