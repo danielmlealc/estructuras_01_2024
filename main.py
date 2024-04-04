@@ -1,11 +1,17 @@
 from typing import Union
 from fastapi import FastAPI
 
+from mook.py import tutelas
+
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
+
+@app.get("/data")
+def read_root():
+    return {"tutelas": tutelas}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
