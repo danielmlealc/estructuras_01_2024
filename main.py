@@ -14,7 +14,7 @@ def read_root():
 def read_item(data: str | None = Query(None, min_length=3)):
     return {"tutelas": data}
 
-@app.get("/api/v1/search")
+@app.get("/api/v1/search/tipo_tutela")
 def read_item(tipo_tutela: str | None = Query(None, min_length=3)):
     result = []
     for tutela in tutelas:
