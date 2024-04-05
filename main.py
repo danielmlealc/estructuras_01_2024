@@ -20,8 +20,7 @@ def read_root():
     for tutela in tutelas:
         if re.search(tipo_tutela, tutela["titulo"] + " " + tutela["resumen"], re.IGNORECASE):
             result.append(tutela)
-
-return result
+    return result
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
