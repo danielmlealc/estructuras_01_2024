@@ -11,7 +11,7 @@ def read_root():
     return {"Hello": "World"}
 
 @app.get("/data{data}")
-def read_root(data: string):
+def read_root():
     return {"tutelas": data}
 
 @app.get("/api/v1/search?tipo_tutela=salud")
