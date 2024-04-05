@@ -10,7 +10,7 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/data{data}")
+@app.get("/data")
 def read_item(data: str | None = Query(None, min_length=3)):
     return {"tutelas": data}
 
