@@ -14,7 +14,7 @@ sqs = boto3.client(
     'sqs',
     region_name='us-east-1',
     aws_access_key_id=aws_access_key_id,
-    aws_secret_access_key=aws_secret_access_key
+    aws_secret_access_key=aws_secret_access_key,
     queue_url= 'https://sqs.us-east-1.amazonaws.com/498807690174/davivienda.fifo'
 )
 
