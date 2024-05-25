@@ -7,7 +7,7 @@ import re
 import boto3
 import uuid
 
-aws_access_key_id = 'AKIAXII2BK07JEZJAWWV
+aws_access_key_id = 'AKIAXII2BK07JEZJAWWV'
 aws_secret_access_key = 'kK9+n1qoTJefY0x1jomPvvalmIjNEURO5Irra210'
 
 sqs = boto3.client(
