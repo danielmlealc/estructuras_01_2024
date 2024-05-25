@@ -4,7 +4,74 @@ from fastapi import FastAPI, Query
 import mook
 import re
 
+import boto3
+import uuid
+
+aws_access_key_id = 'AKIAXII2BK07JEZJAWWV
+aws_secret_access_key = 'kK9+n1qoTJefY0x1jomPvvalmIjNEURO5Irra210'
+
+sqs = boto3.client(
+    'sqs',
+    region_name='us-east-1',
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key
+    queue_url= 'https://sqs.us-east-1.amazonaws.com/498807690174/davivienda.fifo'
+}
+
 app = FastAPI()
+
+def send(cantidad int):
+    # Publicar un mensaje en la cola
+    for i in range(0, cantidad):
+        response = sqs.send_message(
+        QueueUrl=queue_url,
+        MessageBody= f"Transaction {1}",
+        MessageGroupId='pagos',
+        MessageDeduplicationId=str(uuid.uuid4())
+    )
+    print(f"Enviando Transaction {1} {response['MessageId']}")
+I
+    print('Mensaje publicado con éxito: (response["MessageId"])')
+
+def process():
+    #Recibir mensajes de la cola
+    response = sqs.receive_message(
+        QueueUrl=queue_url,
+        AttributeNames=[
+            'ALL'
+        ],
+        MessageAttributeNames=
+            'ALL'
+        ],
+        MaxNumberOfMessages=1,
+        VisibilityTimeout=30,
+        WaitTimeSeconds=0
+    )
+    
+    print(response)
+    if response.get('Messages'):
+        message = response ['Messages']
+        print("Mensaje recibido: (message [0] ['ReceiptHandle']}")
+
+        sqs.delete_message(
+            QueueUrl=queue_url,
+            ReceiptHandle=message[0]['ReceiptHandle']
+        )
+    else:
+        print("No se encontraron mensajes en la cola.")
+    sqs.close()
+
+@app.post("/api/encolar")
+def read_root(parametros: dict):
+    send(parametros['cantidad'])
+    return {"Mensajes Encolados": parametros}
+
+@app.post("/api/desencolar")
+def read_root(parametros: dict):
+    for mensaje in range(1,100)
+        process()
+        
+    return {"Hello": parametros}
 
 @app.get("/")
 def read_root():
