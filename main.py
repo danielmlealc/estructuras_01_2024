@@ -30,7 +30,6 @@ def send(cantidad: int):
             MessageDeduplicationId=str(uuid.uuid4())
         )
         print(f"Enviando Transaction {i} - {response['MessageId']}")
-I
     print(f'Mensaje publicado con éxito: {response["MessageId"]}')
 
 def process():
