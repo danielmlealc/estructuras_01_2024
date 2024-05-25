@@ -24,12 +24,12 @@ def send(cantidad: int):
     # Publicar un mensaje en la cola
     for i in range(0, cantidad):
         response = sqs.send_message(
-        QueueUrl=queue_url,
-        MessageBody= f"Transaction {1}",
-        MessageGroupId='pagos',
-        MessageDeduplicationId=str(uuid.uuid4())
-    )
-    print(f"Enviando Transaction {1} - {response['MessageId']}")
+            QueueUrl=queue_url,
+            MessageBody= f"Transaction {i}",
+            MessageGroupId='pagos',
+            MessageDeduplicationId=str(uuid.uuid4())
+        )
+        print(f"Enviando Transaction {i} - {response['MessageId']}")
 I
     print(f'Mensaje publicado con éxito: {response["MessageId"]}')
 
