@@ -40,7 +40,7 @@ def process():
         AttributeNames=[
             'ALL'
         ],
-        MessageAttributeNames=
+        MessageAttributeNames=[
             'ALL'
         ],
         MaxNumberOfMessages=1,
