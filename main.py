@@ -20,7 +20,7 @@ sqs = boto3.client(
 
 app = FastAPI()
 
-def send(cantidad int):
+def send(cantidad: int):
     # Publicar un mensaje en la cola
     for i in range(0, cantidad):
         response = sqs.send_message(
