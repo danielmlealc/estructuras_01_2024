@@ -29,9 +29,9 @@ def send(cantidad: int):
         MessageGroupId='pagos',
         MessageDeduplicationId=str(uuid.uuid4())
     )
-    print(f"Enviando Transaction {1} {response['MessageId']}")
+    print(f"Enviando Transaction {1} - {response['MessageId']}")
 I
-    print('Mensaje publicado con éxito: (response["MessageId"])')
+    print(f'Mensaje publicado con éxito: {response["MessageId"]}')
 
 def process():
     #Recibir mensajes de la cola
