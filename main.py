@@ -60,18 +60,6 @@ def process():
         print("No se encontraron mensajes en la cola.")
     sqs.close()
 
-@app.post("/api/encolar")
-def read_root(parametros: dict):
-    send(parametros['cantidad'])
-    return {"Mensajes Encolados": parametros}
-
-@app.post("/api/desencolar")
-def read_root(parametros: dict):
-    for mensaje in range(1,100):
-        process()
-        
-    return {"Hello": parametros}
-
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -91,4 +79,15 @@ def read_item(tipo_tutela: str | None = Query(None, min_length=3)):
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
-  
+
+@app.post("/api/encolar")
+def read_root(parametros: dict):
+    send(parametros['cantidad'])
+    return {"Mensajes Encolados": parametros}
+
+@app.post("/api/desencolar")
+def read_root(parametros: dict):
+    for mensaje in range(1,100):
+        process()
+        
+    return {"Hello": parametros}
